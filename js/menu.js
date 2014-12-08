@@ -58,6 +58,7 @@
 		});
 
 		container.addEventListener( clickevent, function( ev ) {
+					alert();
 			if( classie.has( perspectiveWrapper, 'animate') ) {
 				var onEndTransFn = function( ev ) {
 					if( support && ( ev.target.className !== 'container' || ev.propertyName.indexOf( 'transform' ) == -1 ) ) return;
