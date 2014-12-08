@@ -100,7 +100,7 @@ var app = {
 			$('#splash').fadeOut(function(){
 				StatusBar.overlaysWebView(true);
 				StatusBar.show();
-				//$('.outer-nav a').noClickDelay();
+				$('#showMenu').noClickDelay();
 			});
 		},3000);
 		
@@ -124,6 +124,8 @@ var app = {
 		});
 		function updateMyApp(page) {
 			$('.container').click();
+			$('.container').trigger('touchstart');
+			
 			if(page=="") page="inicio";
 			$('nav a').removeClass('active');
 		  	$('#nav_'+page).addClass('active');
@@ -153,10 +155,6 @@ var app = {
 		function search_all(){}
 		function setup_menu(){
 			menu = new IScroll('#menu',{click: true,scrollbars: true,interactiveScrollbars: true,shrinkScrollbars: 'scale',fadeScrollbars: true});
-			menu.on('scroll', function(){
-				y=this.y;
-				console.log(y);
-			});
 			setTimeout(function(){
 				menu.scrollTo(0,100,500);
 			},1000);
