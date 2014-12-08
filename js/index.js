@@ -96,13 +96,13 @@ var app = {
 		navigator.splashscreen.hide();
 		//menu2 = new IScroll('#menu2',{click: true,scrollbars: true,interactiveScrollbars: true,shrinkScrollbars: 'scale',fadeScrollbars: true});
 		updateMyApp("inicio");
-		$('.outer-nav a').noClickDelay();
 		setTimeout(function(){
 			$('#splash').fadeOut(function(){
 				StatusBar.overlaysWebView(true);
 				StatusBar.show();
+				$('.outer-nav a').noClickDelay();
 			});
-		},7000);
+		},3000);
 		
 		slides = $('#slides').bxSlider({
 			controls: false,
