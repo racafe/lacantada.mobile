@@ -12,7 +12,7 @@ function preload() {
 	}
 }
 preload(
-	"img/splash.jpg",
+	"img/splash.png",
 	"img/popup.png",
 	"img/popup1.png",
 	"img/inicio-inactivo.jpg",
@@ -123,8 +123,7 @@ var app = {
 			}
 		});
 		function updateMyApp(page) {
-			$('.container').click();
-			$('.container').trigger('touchstart');
+			$('.container').trigger(clickevent);
 			
 			if(page=="") page="inicio";
 			$('nav a').removeClass('active');
