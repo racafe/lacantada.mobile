@@ -129,13 +129,13 @@ var app = {
 			$('.page.active').fadeOut('10',function(){
 				$('.page.active').removeClass('active');
 				$('#page_'+page).addClass('active');
-				console.log(page);
 				$('#page_'+page).fadeIn('10',function(){
 					switch(page){
 						case 'inicio':
 							setup_inicio();
 						break;
 						case 'menu':
+							setup_menu();
 						break;
 						case 'cancionero':
 						break;
@@ -150,7 +150,16 @@ var app = {
 		}
 
 		function search_all(){}
-		function setup_menu(){}
+		function setup_menu(){
+			menu = new IScroll('#menu',{click: true,scrollbars: true,interactiveScrollbars: true,shrinkScrollbars: 'scale',fadeScrollbars: true});
+			menu.on('scroll', function(){
+				y=this.y;
+				console.log(y);
+			});
+			setTimeout(function(){
+				menu.scrollTo(0,100,500);
+			},1000);
+		}
 		function setup_inicio(){
 			checarSlides("slides");
 			checarSlides("promos");
