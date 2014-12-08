@@ -687,7 +687,7 @@ section div{position:absolute; top:50%; margin-top:-20px; width:100%; text-align
 
 /** MENÚ **/
 #page_menu .title{width:100%; text-align:center; text-transform:uppercase; font-size:23px; color:#fff; font-weight:bold; background:rgba(0,0,0,0.5); line-height:40px;}
-#menu {margin:0; float:left; background:rgba(0,0,0,0.2); width:100%; height:470px; overflow:hidden; position: relative; padding-bottom:5px;
+#menu, #menu2 {margin:0; float:left; background:rgba(0,0,0,0.2); width:100%; height:470px; overflow:hidden; position: relative; padding-bottom:5px;
 	/* Prevent native touch events on Windows */
 	-ms-touch-action: none;
 
@@ -705,8 +705,8 @@ section div{position:absolute; top:50%; margin-top:-20px; width:100%; text-align
 	-o-text-size-adjust: none;
 	text-size-adjust: none;
 }
-#menu .scroller{text-align:center; width:100%; margin-top:5px; margin-bottom:30px;}
-#menu .scroller div{float:left; margin:0px 1% 10px 2%; width:47%; min-height:86px; background-size:100% 100%;}
+#menu .scroller,#menu2 .scroller{text-align:center; width:100%; margin-top:5px; margin-bottom:30px;}
+#menu .scroller div, #menu2 .scroller div{float:left; margin:0px 1% 10px 2%; width:47%; min-height:86px; background-size:100% 100%;}
 div#ron.active{background-image:url(../img/menu/botonesmenuactiv01.png);}
 div#ron{background-image:url(../img/menu/botonesmenuinactivo01.png);}
 
@@ -824,8 +824,8 @@ div#varios{background-image:url(../img/menu/botonesmenuinactivo15.png);}
 	#slides img{width:100%; height:80px !important;}
 	.container header{height:64px;}
 	#promos img{width:100%; height:240px !important;}
-	#menu{height:360px;}
-	#menu .scroller div{min-height:76px;}
+	#menu, #menu2{height:360px;}
+	#menu .scroller div, #menu2 .scroller div{min-height:76px;}
 }
 @media only screen and (max-height: 480px){
 	.bx-wrapper{margin-bottom:10px;}
@@ -834,22 +834,22 @@ div#varios{background-image:url(../img/menu/botonesmenuinactivo15.png);}
 	#slides img{width:100%; height:80px !important;}
 	.container header{height:64px;}
 	#promos img{width:100%; height:240px !important;}
-	#menu{height:360px;}
-	#menu .scroller div{min-height:76px;}
+	#menu, #menu2{height:360px;}
+	#menu .scroller div, #menu2 .scroller div{min-height:76px;}
 }
 /* IPHONE 5/5S */
 @media only screen and (max-device-width: 320px) and (min-device-height: 481px){
 	#promos img{width:100%; height:270px !important;}
 	#slides img{width:100%; height:100px !important;}
-	#menu{height:430px;}
-	#menu .scroller div{min-height:76px;}
+	#menu, #menu2{height:430px;}
+	#menu .scroller div, #menu2 .scroller div{min-height:76px;}
 	
 }
 @media only screen and (max-width: 320px) and (min-height: 481px){
 	#promos img{width:100%; height:270px !important;}
 	#slides img{width:100%; height:100px !important;}
-	#menu{height:430px;}
-	#menu .scroller div{min-height:76px;}
+	#menu, #menu2{height:430px;}
+	#menu .scroller div, #menu2 .scroller div{min-height:76px;}
 }
 /*
 @media only screen and (min-device-width: 320px){
@@ -889,3 +889,4 @@ div#varios{background-image:url(../img/menu/botonesmenuinactivo15.png);}
 @media only screen and (min-width: 2048px){
 	html,body,#wrapper,#scroller,#splash{height:1536px;}
 }*/
+#menu2{display:none;}

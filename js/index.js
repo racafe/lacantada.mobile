@@ -94,14 +94,15 @@ var app = {
 
     start: function() {		
 		navigator.splashscreen.hide();
+		//menu2 = new IScroll('#menu2',{click: true,scrollbars: true,interactiveScrollbars: true,shrinkScrollbars: 'scale',fadeScrollbars: true});
 		updateMyApp("inicio");
-		
+		$('.outer-nav a').noClickDelay();
 		setTimeout(function(){
 			$('#splash').fadeOut(function(){
 				StatusBar.overlaysWebView(true);
 				StatusBar.show();
 			});
-		},3000);
+		},7000);
 		
 		slides = $('#slides').bxSlider({
 			controls: false,
