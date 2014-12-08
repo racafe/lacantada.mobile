@@ -100,7 +100,7 @@ var app = {
 			$('#splash').fadeOut(function(){
 				StatusBar.overlaysWebView(true);
 				StatusBar.show();
-				$('.outer-nav a').noClickDelay();
+				//$('.outer-nav a').noClickDelay();
 			});
 		},3000);
 		
