@@ -99,7 +99,7 @@ var app = {
 			$('#splash').fadeOut(function(){
 				StatusBar.overlaysWebView(true);
 				StatusBar.show();
-				$('#showMenu').noClickDelay();
+				//$('#showMenu').noClickDelay();
 			});
 		},3000);
 		
@@ -140,6 +140,7 @@ var app = {
 						case 'cancionero':
 						break;
 						case 'info':
+							setup_info();
 						break;
 						case 'fotos':
 							setup_fotos();
@@ -284,7 +285,33 @@ var app = {
 			});*/
 			
 		}
-		function setup_info(){}
+		function setup_info(){
+			info = new IScroll('#info_container',{click: true,scrollbars: true,interactiveScrollbars: true,shrinkScrollbars: 'scale',fadeScrollbars: true});
+			$.ajax({
+				url: "http://www.tuquinielita.com/lacantadabar/getInfo.php",
+				dataType: "jsonp",
+				data:{branch:1},
+				success: function (response) {
+					if(response.success){
+						if($('#branch_description').html()!=response.description)
+							$('#branch_description').html(response.description);
+						if($('#branch_location').html()!=response.location)
+							$('#branch_location').html(response.location);
+						if($('#branch_schedule').html()!=response.schedule)
+							$('#branch_schedule').html(response.schedule);
+						if($('#branch_phones').html()!=response.phones)
+							$('#branch_phones').html(response.phones);
+						if($('#branch_image').attr('src')!="http://tuquinielita.com/lacantadabar/"+response.image_path)
+							$('#branch_image').attr('src',"http://tuquinielita.com/lacantadabar/"+response.image_path);
+						info.refresh();
+					}
+				},
+				error: function(){
+					alert("error");
+					setTimeout(function(){if(target=="slides"){slides.reloadSlider();}else{promos.reloadSlider();}},100);
+				}
+			});
+		}
 		function getLocationHash () {
 		  return window.location.hash.substring(1);
 		}
