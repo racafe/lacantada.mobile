@@ -123,7 +123,6 @@ var app = {
 			}
 		});
 		function updateMyApp(page) {
-			//$('.container').trigger(clickevent);
 			containerEvent($('.container').trigger(clickevent));
 			if(page=="") page="inicio";
 			$('nav a').removeClass('active');
@@ -153,10 +152,9 @@ var app = {
 
 		function search_all(){}
 		function setup_menu(){
-			menu = new IScroll('#menu',{click: true,scrollbars: true,interactiveScrollbars: true,shrinkScrollbars: 'scale',fadeScrollbars: true});
 			setTimeout(function(){
-				menu.scrollTo(0,100,500);
-			},1000);
+				menu = new IScroll('#menu',{click: true,scrollbars: true,interactiveScrollbars: true,shrinkScrollbars: 'scale',fadeScrollbars: true});
+			},10);
 		}
 		function setup_inicio(){
 			checarSlides("slides");

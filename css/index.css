@@ -705,6 +705,21 @@ section div{position:absolute; top:50%; margin-top:-20px; width:100%; text-align
 	-o-text-size-adjust: none;
 	text-size-adjust: none;
 }
+.scroller {
+	position: absolute;
+
+	/* Prevent elements to be highlighted on tap */
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+
+	/* Put the scroller into the HW Compositing layer right from the start */
+	-webkit-transform: translateZ(0);
+	-moz-transform: translateZ(0);
+	-ms-transform: translateZ(0);
+	-o-transform: translateZ(0);
+	transform: translateZ(0);
+	width:100%;
+}
+.iScrollIndicator{border:none !important; background:rgba(100,100,100,0.5) !important;}
 #menu .scroller,#menu2 .scroller{text-align:center; width:100%; margin-top:5px; margin-bottom:30px;}
 #menu .scroller div, #menu2 .scroller div{float:left; margin:0px 1% 10px 2%; width:47%; min-height:86px; background-size:100% 100%;}
 div#ron.active{background-image:url(../img/menu/botonesmenuactiv01.png);}
