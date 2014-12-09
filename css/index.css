@@ -86,7 +86,7 @@ section div{position:absolute; top:50%; margin-top:-20px; width:100%; text-align
 }
 
 .container header{width:100%; height:72px; background-size:100% 100%; background-image:url(../img/ui_fondo_01.png); position:relative; margin-bottom:10px;}
-#showMenu{width:30px; height:30px; position:absolute; bottom:10px; left:8px;}
+#showMenu{width:50px; height:50px; position:absolute; bottom:10px; left:8px; background:rgba(0,0,0,0);}
 .container::after {
 	content: '';
 	position: absolute;
