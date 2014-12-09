@@ -123,8 +123,8 @@ var app = {
 			}
 		});
 		function updateMyApp(page) {
-			$('.container').trigger(clickevent);
-			
+			//$('.container').trigger(clickevent);
+			containerEvent($('.container').trigger(clickevent));
 			if(page=="") page="inicio";
 			$('nav a').removeClass('active');
 		  	$('#nav_'+page).addClass('active');

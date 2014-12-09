@@ -36,7 +36,30 @@
 		docscroll = 0,
 		// click event (if mobile use touchstart)
 		clickevent = mobilecheck() ? 'touchstart' : 'click';
-
+	function containerEvent(ev){
+		var showMenu = document.getElementById( 'showMenu' ),
+			perspectiveWrapper = document.getElementById( 'perspective' ),
+			container = perspectiveWrapper.querySelector( '.container' ),
+			contentWrapper = container.querySelector( '.wrapper' );
+		if( classie.has( perspectiveWrapper, 'animate') ) {
+				var onEndTransFn = function( ev ) {
+					if( support && ( ev.target.className !== 'container' || ev.propertyName.indexOf( 'transform' ) == -1 ) ) return;
+					this.removeEventListener( transEndEventName, onEndTransFn );
+					classie.remove( perspectiveWrapper, 'modalview' );
+					// mac chrome issue:
+					document.body.scrollTop = document.documentElement.scrollTop = docscroll;
+					// change top of contentWrapper
+					contentWrapper.style.top = '0px';
+				};
+				if( support ) {
+					perspectiveWrapper.addEventListener( transEndEventName, onEndTransFn );
+				}
+				else {
+					onEndTransFn.call();
+				}
+				classie.remove( perspectiveWrapper, 'animate' );
+			}
+	}
 	function init() {
 		var showMenu = document.getElementById( 'showMenu' ),
 			perspectiveWrapper = document.getElementById( 'perspective' ),
@@ -58,25 +81,7 @@
 		});
 
 		container.addEventListener( clickevent, function( ev ) {
-					alert();
-			if( classie.has( perspectiveWrapper, 'animate') ) {
-				var onEndTransFn = function( ev ) {
-					if( support && ( ev.target.className !== 'container' || ev.propertyName.indexOf( 'transform' ) == -1 ) ) return;
-					this.removeEventListener( transEndEventName, onEndTransFn );
-					classie.remove( perspectiveWrapper, 'modalview' );
-					// mac chrome issue:
-					document.body.scrollTop = document.documentElement.scrollTop = docscroll;
-					// change top of contentWrapper
-					contentWrapper.style.top = '0px';
-				};
-				if( support ) {
-					perspectiveWrapper.addEventListener( transEndEventName, onEndTransFn );
-				}
-				else {
-					onEndTransFn.call();
-				}
-				classie.remove( perspectiveWrapper, 'animate' );
-			}
+			containerEvent(ev);
 		});
 
 		perspectiveWrapper.addEventListener( clickevent, function( ev ) { return false; } );
