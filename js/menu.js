@@ -36,11 +36,10 @@
 		docscroll = 0,
 		// click event (if mobile use touchstart)
 		clickevent = mobilecheck() ? 'touchstart' : 'click';
-	var showMenu = document.getElementById( 'showMenu' ),
+var showMenu = document.getElementById( 'showMenu' ),
 			perspectiveWrapper = document.getElementById( 'perspective' ),
 			container = perspectiveWrapper.querySelector( '.container' ),
 			contentWrapper = container.querySelector( '.wrapper' );
-	
 	function containerEvent(ev){
 		
 		if( classie.has( perspectiveWrapper, 'animate') ) {
@@ -63,6 +62,12 @@
 			}
 	}
 	
+	function init() {
+		var showMenu = document.getElementById( 'showMenu' ),
+			perspectiveWrapper = document.getElementById( 'perspective' ),
+			container = perspectiveWrapper.querySelector( '.container' ),
+			contentWrapper = container.querySelector( '.wrapper' );
+
 		showMenu.addEventListener( clickevent, function( ev ) {
 			ev.stopPropagation();
 			ev.preventDefault();
@@ -82,5 +87,8 @@
 		});
 
 		perspectiveWrapper.addEventListener( clickevent, function( ev ) { return false; } );
+	}
+
+	init();
 
 //})();
