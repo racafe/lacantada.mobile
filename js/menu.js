@@ -36,11 +36,13 @@
 		docscroll = 0,
 		// click event (if mobile use touchstart)
 		clickevent = mobilecheck() ? 'touchstart' : 'click';
-	function containerEvent(ev){
-		var showMenu = document.getElementById( 'showMenu' ),
+	var showMenu = document.getElementById( 'showMenu' ),
 			perspectiveWrapper = document.getElementById( 'perspective' ),
 			container = perspectiveWrapper.querySelector( '.container' ),
 			contentWrapper = container.querySelector( '.wrapper' );
+	
+	function containerEvent(ev){
+		
 		if( classie.has( perspectiveWrapper, 'animate') ) {
 				var onEndTransFn = function( ev ) {
 					if( support && ( ev.target.className !== 'container' || ev.propertyName.indexOf( 'transform' ) == -1 ) ) return;
