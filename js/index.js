@@ -105,7 +105,7 @@ var app = {
 		$("#swiper").swipe( {
 			//Generic swipe handler for all directions
 			swipeRight:function(event, direction, distance, duration, fingerCount) {
-			  $('#showMenu').trigger('touchstart');
+			  showMenuEvent($('#showMenu').trigger(clickevent));
 			  alert();
 			},
 			//Default is 75px, set to 0 for demo so any distance triggers swipe
