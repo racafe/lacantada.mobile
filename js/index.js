@@ -102,7 +102,9 @@ var app = {
 				//$('#showMenu').noClickDelay();
 			});
 		},3000);
-		
+		$("#swiper").hammer().bind("swiperight", function(){
+			$('#showMenu').trigger(clickevent);
+		});
 		slides = $('#slides').bxSlider({
 			controls: false,
 			snap:true,
