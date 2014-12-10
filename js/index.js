@@ -102,9 +102,14 @@ var app = {
 				//$('#showMenu').noClickDelay();
 			});
 		},3000);
-		$("#swiper").hammer().bind("swiperight", function(){
-			$('#showMenu').trigger(clickevent);
-		});
+		$("#swiper").swipe( {
+			//Generic swipe handler for all directions
+			swipeRight:function(event, direction, distance, duration, fingerCount) {
+			  $('#showMenu').trigger(clickevent);
+			},
+			//Default is 75px, set to 0 for demo so any distance triggers swipe
+			threshold:75
+		  });
 		slides = $('#slides').bxSlider({
 			controls: false,
 			snap:true,

@@ -42,7 +42,7 @@
 .bx-wrapper .bx-pager,
 .bx-wrapper .bx-controls-auto {
 	position: absolute;
-	bottom: -5px;
+	bottom: 0px;
 	width: 100%;
 }
 .bx-wrapper:nth-child(2) .bx-pager{
