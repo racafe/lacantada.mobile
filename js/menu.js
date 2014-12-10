@@ -36,11 +36,11 @@
 		docscroll = 0,
 		// click event (if mobile use touchstart)
 		clickevent = mobilecheck() ? 'touchstart' : 'click';
+	function containerEvent(ev){
 		var showMenu = document.getElementById( 'showMenu' ),
 			perspectiveWrapper = document.getElementById( 'perspective' ),
 			container = perspectiveWrapper.querySelector( '.container' ),
 			contentWrapper = container.querySelector( '.wrapper' );
-	function containerEvent(ev){
 		if( classie.has( perspectiveWrapper, 'animate') ) {
 				var onEndTransFn = function( ev ) {
 					if( support && ( ev.target.className !== 'container' || ev.propertyName.indexOf( 'transform' ) == -1 ) ) return;
@@ -60,7 +60,14 @@
 				classie.remove( perspectiveWrapper, 'animate' );
 			}
 	}
-	function showMenuEvent(ev){
+	
+	function init() {
+		var showMenu = document.getElementById( 'showMenu' ),
+			perspectiveWrapper = document.getElementById( 'perspective' ),
+			container = perspectiveWrapper.querySelector( '.container' ),
+			contentWrapper = container.querySelector( '.wrapper' );
+
+		showMenu.addEventListener( clickevent, function( ev ) {
 			ev.stopPropagation();
 			ev.preventDefault();
 			docscroll = scrollY();
@@ -72,12 +79,6 @@
 			classie.add( perspectiveWrapper, 'modalview' );
 			// animate..
 			setTimeout( function() { classie.add( perspectiveWrapper, 'animate' ); }, 25 );
-	}
-	function init() {
-
-
-		showMenu.addEventListener( clickevent, function( ev ) {
-			showMenuEvent(ev);
 		});
 
 		container.addEventListener( clickevent, function( ev ) {
