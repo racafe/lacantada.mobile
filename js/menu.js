@@ -61,12 +61,18 @@ var showMenu = document.getElementById( 'showMenu' ),
 				classie.remove( perspectiveWrapper, 'animate' );
 			}
 	}
-	
+	function menuu(){
+		docscroll = scrollY();
+			// change top of contentWrapper
+			contentWrapper.style.top = docscroll * -1 + 'px';
+			// mac chrome issue:
+			document.body.scrollTop = document.documentElement.scrollTop = 0;
+			// add modalview class
+			classie.add( perspectiveWrapper, 'modalview' );
+			// animate..
+			setTimeout( function() { classie.add( perspectiveWrapper, 'animate' ); }, 25 );
+	}
 	function init() {
-		var showMenu = document.getElementById( 'showMenu' ),
-			perspectiveWrapper = document.getElementById( 'perspective' ),
-			container = perspectiveWrapper.querySelector( '.container' ),
-			contentWrapper = container.querySelector( '.wrapper' );
 
 		showMenu.addEventListener( clickevent, function( ev ) {
 			ev.stopPropagation();
