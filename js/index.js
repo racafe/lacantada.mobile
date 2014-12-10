@@ -168,6 +168,10 @@ var app = {
 			if(!$("#promos li").length){
 				checarSlides("promos");
 			}
+			$('#facebook').on(clickevent,function(){
+				var ref = window.open('https://www.facebook.com/GalleryPuebla', '_blank', 'location=no');
+				ref.addEventListener('loadstart', function(event) { alert(event.url); });
+			});
 		}
 		function checarSlides(target){
 			var prepend="";
