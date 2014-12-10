@@ -88,7 +88,7 @@ var app = {
     },
 
     start: function() {		
-		navigator.splashscreen.hide();
+		navigator.splashscreen.hide(); navigator.notification.vibrate(1000);
 		updateMyApp("inicio");
 		setTimeout(function(){
 			$('#splash').fadeOut(function(){
