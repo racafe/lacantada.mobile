@@ -180,7 +180,6 @@ var app = {
 				var ref = window.open('https://www.google.com.mx/maps/@19.0173872,-98.2522782,20z?hl=en', '_blank', 'location=no',closebuttoncaption="Cerrar");
 				//ref.addEventListener('loadstart',function(event) { alert(event.url); });
 			});
-			self.inAppBrowserViewController.closeButton.tintColor = [UIColor whiteColor];
 		}
 		function checarSlides(target){
 			var prepend="";
