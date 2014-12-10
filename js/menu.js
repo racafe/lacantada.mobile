@@ -63,12 +63,6 @@
 			}
 	}
 	
-	function init() {
-		var showMenu = document.getElementById( 'showMenu' ),
-			perspectiveWrapper = document.getElementById( 'perspective' ),
-			container = perspectiveWrapper.querySelector( '.container' ),
-			contentWrapper = container.querySelector( '.wrapper' );
-
 		showMenu.addEventListener( clickevent, function( ev ) {
 			ev.stopPropagation();
 			ev.preventDefault();
@@ -88,8 +82,5 @@
 		});
 
 		perspectiveWrapper.addEventListener( clickevent, function( ev ) { return false; } );
-	}
-
-	init();
 
 //})();
