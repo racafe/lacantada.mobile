@@ -162,12 +162,53 @@ var app = {
 		function setup_menu(){
 			if(typeof carta == "undefined")
 				carta = new IScroll('#menu',{click: true,scrollbars: true,interactiveScrollbars: true,shrinkScrollbars: 'scale',fadeScrollbars: true});
-			$('.category').on(clickevent,function(){
-				console.log("entro");
-				$('#menu').fadeOut('fast',function(){
-					$('#menu_target').fadeIn('fast');
+			if(typeof carta_bebida == "undefined")
+				carta_bebida = new IScroll('#menu_target_list',{click: true,scrollbars: true,interactiveScrollbars: true,shrinkScrollbars: 'scale',fadeScrollbars: true});
+			searching_drinks = false;
+			$('#menu_target .title').on(clickevent,function(){
+				$('#menu_target').fadeOut('fast',function(){
+					$('#div').fadeIn('fast');
 				});
 			});
+			$('.category').on(clickevent,function(){
+				if(!searching_drinks){
+					drinks = true;
+					searching_drinks=true;
+					$('.category').removeClass('active');
+					$(this).addClass('active');
+					//Search on server
+					result = "<li><span>NOMBRE</span><span>BOTELLA</span><span>COPA</span></li>";
+					$("#menu_target_list .scroller").html(result);
+					search_drink=$(this).attr('id');
+					$.ajax({
+						url: "http://www.tuquinielita.com/lacantadabar/getProductsByType.php",
+						dataType: "jsonp",
+						data: {type:search_drink},
+						success: function (response) {
+							if(response.success){
+								searching_drinks=false;
+								count = response.items.length;
+								$.each(response.items,function (i,item) {
+									result+="<li><span>"+item.name+"</span><span>"+item.price+"</span><span>"+item.drink+"</span></li>";
+									if (!--count) {
+											$('#div').fadeOut('fast',function(){
+												$('#menu_target').fadeIn('fast');
+											});
+											$("#menu_target_list .scroller").html(result);
+											$('#menu_target .title').html(search_drink);
+											if(menu){menu.refresh();menu.scrollTo(0,0,1500);}
+									}
+								});
+							}else{
+								searching_drinks=false;
+							}
+						},
+						error: function(){
+							searching_drinks=false;
+						}
+					});
+				}
+            });
 		}
 		function setup_inicio(){
 			checarSlides("slides");

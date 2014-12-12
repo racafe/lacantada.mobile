@@ -686,8 +686,9 @@ section div{position:absolute; top:50%; margin-top:-20px; width:100%; text-align
 
 
 /** MENÚ **/
+#page_menu #div{width:100%; height:50px; margin-top:5px; float:left;}
 #page_menu .title{width:100%; text-align:center; text-transform:uppercase; font-size:23px; color:#fff; font-weight:bold; background:rgba(0,0,0,0.5); line-height:40px;}
-#menu, #menu2 {margin:0; float:left; background:rgba(0,0,0,0.2); width:100%; height:470px; overflow:hidden; position: relative; padding-bottom:5px;
+#menu, #menu2, #menu_target {margin:0; float:left; background:rgba(0,0,0,0.2); width:100%; height:470px; overflow:hidden; position: relative; padding-bottom:5px;
 	/* Prevent native touch events on Windows */
 	-ms-touch-action: none;
 
@@ -766,6 +767,37 @@ div#colados{background-image:url(../img/menu/botonesmenuinactivo14.png);}
 
 div#varios.active{background-image:url(../img/menu/botonesmenuactiv15.png);}
 div#varios{background-image:url(../img/menu/botonesmenuinactivo15.png);}
+
+#menu_target{display:none;}
+#menu_target .title{margin:0;}
+#menu_target_list{width:100%; height:440px; overflow:hidden; position: relative;
+	/* Prevent native touch events on Windows */
+	-ms-touch-action: none;
+
+	/* Prevent the callout on tap-hold and text selection */
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+	/* Prevent text resize on orientation change, useful for web-apps */
+	-webkit-text-size-adjust: none;
+	-moz-text-size-adjust: none;
+	-ms-text-size-adjust: none;
+	-o-text-size-adjust: none;
+	text-size-adjust: none;
+}
+#menu_target_list .scroller{text-align:center; width:100%; margin-bottom:30px;}
+#menu_target_list .scroller li{list-style:none; background:rgba(0,0,0,0.1); font-weight:normal !important; font-size:13px;}
+#menu_target_list .scroller li:first-child{list-style:none; background:rgba(0,0,30,0.3); font-weight:bold; font-size:15px !important; border-bottom:#fff thin dotted !important; min-height:24px; line-height:24px; margin-bottom:5px;}
+#menu_target_list .scroller li span{ text-transform:uppercase; float:left; min-height:18px;}
+/*#menu_target_list .scroller li span:nth-child(1){width:15%; min-width:15%; max-width:15%;}*/
+#menu_target_list .scroller li span:nth-child(1){width:60%; min-width:60%; max-width:60%; overflow:hidden; text-wrap:none; white-space: nowrap; text-align:left; padding-left:5px;}
+#menu_target_list .scroller li:first-child span:nth-child(1){text-align:center;}
+#menu_target_list .scroller li span:nth-child(2){width:20%; min-width:20%; max-width:20%;}
+#menu_target_list .scroller li span:nth-child(3){width:20%; min-width:20%; max-width:20%;}
+
 /* FOTOS */
 #photo_list img{float:left; margin:5px 0.5% 5px 0.5%; width:32.3%; height:70px; border:2px transparent solid;}
 #photo_list img.active{border:2px #fff solid;}
@@ -888,7 +920,7 @@ div#varios{background-image:url(../img/menu/botonesmenuinactivo15.png);}
 	#slides img{width:100%; height:80px !important;}
 	.container header{height:64px;}
 	#promos img{width:100%; height:240px !important;}
-	#menu{height:360px;}
+	#menu,#menu_target{height:360px;}
 	#menu .scroller div{min-height:76px;}
 	#photo_list,#info_container {height: 395px;}
 }
@@ -899,7 +931,7 @@ div#varios{background-image:url(../img/menu/botonesmenuinactivo15.png);}
 	#slides img{width:100%; height:80px !important;}
 	.container header{height:64px;}
 	#promos img{width:100%; height:240px !important;}
-	#menu{height:360px;}
+	#menu, #menu_target{height:360px;}
 	#menu .scroller div{min-height:76px;}
 	#photo_list, #info_container{height: 395px;}
 }
@@ -907,7 +939,7 @@ div#varios{background-image:url(../img/menu/botonesmenuinactivo15.png);}
 @media only screen and (max-device-width: 320px) and (min-device-height: 481px){
 	#promos img{width:100%; height:270px !important;}
 	#slides img{width:100%; height:100px !important;}
-	#menu{height:430px;}
+	#menu,#menu_target{height:430px;}
 	#menu .scroller div{min-height:76px;}
 	#splash{background:url(../img/splash_iphone5.png) no-repeat; background-size:100% 100%;}
 	#photo_list,#info_container {height: 460px;}
@@ -915,7 +947,7 @@ div#varios{background-image:url(../img/menu/botonesmenuinactivo15.png);}
 @media only screen and (max-width: 320px) and (min-height: 481px){
 	#promos img{width:100%; height:270px !important;}
 	#slides img{width:100%; height:100px !important;}
-	#menu{height:430px;}
+	#menu,#menu_target{height:430px;}
 	#menu .scroller div{min-height:76px;}
 	#splash{background:url(../img/splash_iphone5.png) no-repeat; background-size:100% 100%;}
 	#photo_list,#info_container {height: 460px;}
