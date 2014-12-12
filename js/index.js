@@ -88,7 +88,7 @@ var app = {
     },
 
     start: function() {		
-		navigator.splashscreen.hide(); navigator.notification.vibrate(1000);
+//		navigator.splashscreen.hide(); navigator.notification.vibrate(1000);
 		updateMyApp("inicio");
 		setup_all();
 		setTimeout(function(){
@@ -124,39 +124,74 @@ var app = {
 			  },800);
 			}
 		});
+		current = "inicio";
 		function updateMyApp(page) {
 			containerEvent($('.container').trigger(clickevent));
 			if(page=="") page="inicio";
 			$('nav a').removeClass('active');
 		  	$('#nav_'+page).addClass('active');
-			$('.page.active').fadeOut('10',function(){
-				$('.page.active').removeClass('active');
-				$('#page_'+page).addClass('active');
-				$('#page_'+page).fadeIn('10',function(){
-					switch(page){
-						case 'inicio':
-							setup_inicio();
-						break;
-						case 'menu':
-							setup_menu();
-						break;
-						case 'cancionero':
-						break;
-						case 'info':
-							setup_info();
-						break;
-						case 'fotos':
-							setup_fotos();
-						break;
-					}
+			if(typeof current == "undefined" || current != page){
+				current = page;
+				$('.page.active').fadeOut('10',function(){
+					$('.page.active').removeClass('active');
+					$('#page_'+page).addClass('active');
+					$('#page_'+page).fadeIn('10',function(){
+						switch(page){
+							case 'inicio':
+								setup_inicio();
+							break;
+							case 'menu':
+								setup_menu();
+							break;
+							case 'cancionero':
+							break;
+							case 'info':
+								setup_info();
+							break;
+							case 'fotos':
+								setup_fotos();
+							break;
+						}
+					});
 				});
-			});
-			setLocationHash(page);
+			}else{
+				$('.page.active').removeClass('active');
+					$('#page_'+page).addClass('active');
+					$('#page_'+page).fadeIn('10',function(){
+						switch(page){
+							case 'inicio':
+								setup_inicio();
+							break;
+							case 'menu':
+								setup_menu();
+							break;
+							case 'cancionero':
+							break;
+							case 'info':
+								setup_info();
+							break;
+							case 'fotos':
+								setup_fotos();
+							break;
+						}
+					});
+			}
+			//setLocationHash(page);
 		}
 		function setup_all(){
 			setup_inicio();
 			setup_fotos();
 			setup_info();
+			document.addEventListener("backbutton", function(e){
+				if(getLocationHash()=='#inicio'){
+					/* 
+					 Event preventDefault/stopPropagation not required as adding backbutton
+					  listener itself override the default behaviour. Refer below PhoneGap link.
+					*/
+					//e.preventDefault();
+					navigator.app.exitApp();
+				}
+			}, false);
 		}
 		function search_all(){}
 		function setup_menu(){
@@ -166,11 +201,18 @@ var app = {
 				carta_bebida = new IScroll('#menu_target_list',{click: true,scrollbars: true,interactiveScrollbars: true,shrinkScrollbars: 'scale',fadeScrollbars: true});
 			searching_drinks = false;
 			$('#menu_target .title').on(clickevent,function(){
+				goBack();
+			});
+			if(getHash2()){
+				$('#div').fadeOut('fast',function(){
+					$('#menu_target').fadeIn('fast');
+				});
+			}else{
 				$('#menu_target').fadeOut('fast',function(){
 					$('#div').fadeIn('fast');
 				});
-			});
-			$('.category').on(clickevent,function(){
+			}
+			$('.category').click(function(){
 				if(!searching_drinks){
 					drinks = true;
 					searching_drinks=true;
@@ -191,12 +233,10 @@ var app = {
 								$.each(response.items,function (i,item) {
 									result+="<li><span>"+item.name+"</span><span>"+item.price+"</span><span>"+item.drink+"</span></li>";
 									if (!--count) {
-											$('#div').fadeOut('fast',function(){
-												$('#menu_target').fadeIn('fast');
-											});
+											setLocationHash("#menu&"+search_drink);
 											$("#menu_target_list .scroller").html(result);
 											$('#menu_target .title').html(search_drink);
-											if(menu){menu.refresh();menu.scrollTo(0,0,1500);}
+											if(carta_bebida){carta_bebida.refresh();carta_bebida.scrollTo(0,0,1500);}
 									}
 								});
 							}else{
@@ -220,15 +260,15 @@ var app = {
 				checarSlides("promos");
 			}
 			$('#facebook').on(clickevent,function(){
-				var ref = window.open('https://www.facebook.com/GalleryPuebla', '_blank', 'location=no',closebuttoncaption="Cerrar");
+				var ref = window.open('https://www.facebook.com/GalleryPuebla', '_blank', 'location=no','closebuttoncaption=Cerrar');
 				//ref.addEventListener('loadstart',function(event) { alert(event.url); });
 			});
 			$('#twitter').on(clickevent,function(){
-				var ref = window.open('http://www.twitter.com/lacantadabar', '_blank', 'location=no',closebuttoncaption="Cerrar");
+				var ref = window.open('http://www.twitter.com/lacantadabar', '_blank', 'location=no','closebuttoncaption=Cerrar');
 				//ref.addEventListener('loadstart',function(event) { alert(event.url); });
 			});
 			$('#location').on(clickevent,function(){
-				var ref = window.open('https://www.google.com.mx/maps/@19.0173872,-98.2522782,20z?hl=en', '_blank', 'location=no',closebuttoncaption="Cerrar");
+				var ref = window.open('https://www.google.com.mx/maps/@19.0173872,-98.2522782,20z?hl=en', '_blank', 'location=no','closebuttoncaption=Cerrar');
 				//ref.addEventListener('loadstart',function(event) { alert(event.url); });
 			});
 		}
@@ -380,9 +420,13 @@ var app = {
 			});
 		}
 		function getLocationHash () {
-		  return window.location.hash.substring(1);
+		  return window.location.hash.substring(1).split("&")[0];
 		}
-		
+		function getHash2(){
+			if(typeof window.location.hash.substring(1).split("&")[1] == "undefined")
+				return false;
+			return true;
+		}
 		function setLocationHash(str) {
 		  window.location.hash = str;
 		}
@@ -411,4 +455,11 @@ function imgError(image){
 		//$(image).attr("src",source+"?234");			
 	}
 	return true;
+}
+function goBack(){
+    if (typeof (navigator.app) !== "undefined") {
+        navigator.app.backHistory();
+    } else {
+        window.history.back();
+    }
 }
