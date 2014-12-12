@@ -719,7 +719,7 @@ section div{position:absolute; top:50%; margin-top:-20px; width:100%; text-align
 	transform: translateZ(0);
 	width:100%;
 }
-.iScrollIndicator{border:none !important; background:rgba(100,100,100,0.5) !important;}
+.iScrollIndicator{border:none !important; background:rgba(0,0,0,0.2) !important;}
 #menu .scroller{text-align:center; width:100%; margin-top:5px; margin-bottom:30px;}
 #menu .scroller div{float:left; margin:0px 1% 10px 2%; width:47%; min-height:86px; background-size:100% 100%;}
 div#ron.active{background-image:url(../img/menu/botonesmenuactiv01.png);}

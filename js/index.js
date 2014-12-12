@@ -90,6 +90,7 @@ var app = {
     start: function() {		
 		navigator.splashscreen.hide(); navigator.notification.vibrate(1000);
 		updateMyApp("inicio");
+		setup_all();
 		setTimeout(function(){
 			$('#splash').fadeOut(function(){
 				StatusBar.overlaysWebView(true);
@@ -152,12 +153,21 @@ var app = {
 			});
 			setLocationHash(page);
 		}
-
+		function setup_all(){
+			setup_inicio();
+			setup_fotos();
+			setup_info();
+		}
 		function search_all(){}
 		function setup_menu(){
-			setTimeout(function(){
-				menu = new IScroll('#menu',{click: true,scrollbars: true,interactiveScrollbars: true,shrinkScrollbars: 'scale',fadeScrollbars: true});
-			},10);
+			if(typeof carta == "undefined")
+				carta = new IScroll('#menu',{click: true,scrollbars: true,interactiveScrollbars: true,shrinkScrollbars: 'scale',fadeScrollbars: true});
+			$('.category').on(clickevent,function(){
+				console.log("entro");
+				$('#menu').fadeOut('fast',function(){
+					$('#menu_target').fadeIn('fast');
+				});
+			});
 		}
 		function setup_inicio(){
 			checarSlides("slides");
@@ -202,9 +212,8 @@ var app = {
 							if(!localStorage.getItem(target)||localStorage.getItem(target)!=prepend||!$("#"+target+" li").length){
 								localStorage.setItem(target,prepend);
 								$("#"+target).html(prepend);
-								setTimeout(function(){if(target=="slides"){slides.reloadSlider();}else{promos.reloadSlider();}},100);
+								setTimeout(function(){if(target=="slides"){slides.reloadSlider();}else{promos.reloadSlider();}},500);							
 							}
-							
 						}
 					});
 				},
@@ -221,6 +230,8 @@ var app = {
 		}
 		function check_refresh(variable){}
 		function setup_fotos(){
+			if(typeof photolist == "undefined")
+				photolist = new IScroll('#photo_list',{click: true,probeType:3,scrollbars: true,interactiveScrollbars: true,shrinkScrollbars: 'scale',fadeScrollbars: true});
 			result ="";
 			$.ajax({
 				url: "http://www.tuquinielita.com/lacantadabar/getPics.php",
@@ -257,7 +268,6 @@ var app = {
 			
 			//Setup Photo List iScroll
 			loading = false;
-			photolist = new IScroll('#photo_list',{click: true,probeType:3,scrollbars: true,interactiveScrollbars: true,shrinkScrollbars: 'scale',fadeScrollbars: true});
 			/*photolist.on('scroll', function(){
 				if(!loading&&this.y<this.maxScrollY){
 					loading = true;
@@ -300,7 +310,9 @@ var app = {
 			
 		}
 		function setup_info(){
-			info = new IScroll('#info_container',{click: true,scrollbars: true,interactiveScrollbars: true,shrinkScrollbars: 'scale',fadeScrollbars: true});
+			if (typeof info == 'undefined') {
+				info = new IScroll('#info_container',{click: true,scrollbars: true,interactiveScrollbars: true,shrinkScrollbars: 'scale',fadeScrollbars: true});
+			}
 			$.ajax({
 				url: "http://www.tuquinielita.com/lacantadabar/getInfo.php",
 				dataType: "jsonp",
