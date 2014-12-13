@@ -723,49 +723,20 @@ section div{position:absolute; top:50%; margin-top:-20px; width:100%; text-align
 .iScrollIndicator{border:none !important; background:rgba(0,0,0,0.2) !important;}
 #menu .scroller{text-align:center; width:100%; margin-top:5px; margin-bottom:30px;}
 #menu .scroller div{float:left; margin:0px 1% 10px 2%; width:47%; min-height:86px; background-size:100% 100%;}
-div#ron.active{background-image:url(../img/menu/botonesmenuactiv01.png);}
 div#ron{background-image:url(../img/menu/botonesmenuinactivo01.png);}
-
-div#whisky.active{background-image:url(../img/menu/botonesmenuactiv02.png);}
 div#whisky{background-image:url(../img/menu/botonesmenuinactivo02.png);}
-
-div#vodka.active{background-image:url(../img/menu/botonesmenuactiv03.png);}
 div#vodka{background-image:url(../img/menu/botonesmenuinactivo03.png);}
-
-div#tequila.active{background-image:url(../img/menu/botonesmenuactiv4.png);}
 div#tequila{background-image:url(../img/menu/botonesmenuinactivo04.png);}
-
-div#ginebra.active{background-image:url(../img/menu/botonesmenuactiv5.png);}
 div#ginebra{background-image:url(../img/menu/botonesmenuinactivo05.png);}
-
-div#brandy.active{background-image:url(../img/menu/botonesmenuactiv6.png);}
 div#brandy{background-image:url(../img/menu/botonesmenuinactivo06.png);}
-
-div#mezcal.active{background-image:url(../img/menu/botonesmenuactiv7.png);}
 div#mezcal{background-image:url(../img/menu/botonesmenuinactivo07.png);}
-
-div#champagne.active{background-image:url(../img/menu/botonesmenuactiv8.png);}
 div#champagne{background-image:url(../img/menu/botonesmenuinactivo08.png);}
-
-div#cognac.active{background-image:url(../img/menu/botonesmenuactiv9.png);}
 div#cognac{background-image:url(../img/menu/botonesmenuinactivo09.png);}
-
-div#shots.active{background-image:url(../img/menu/botonesmenuactiv10.png);}
 div#shots{background-image:url(../img/menu/botonesmenuinactivo10.png);}
-
-div#licores.active{background-image:url(../img/menu/botonesmenuactiv11.png);}
 div#licores{background-image:url(../img/menu/botonesmenuinactivo11.png);}
-
-div#jarras.active{background-image:url(../img/menu/botonesmenuactiv12.png);}
 div#jarras{background-image:url(../img/menu/botonesmenuinactivo12.png);}
-
-div#margaritas.active{background-image:url(../img/menu/botonesmenuactiv13.png);}
 div#margaritas{background-image:url(../img/menu/botonesmenuinactivo13.png);}
-
-div#colados.active{background-image:url(../img/menu/botonesmenuactiv14.png);}
 div#colados{background-image:url(../img/menu/botonesmenuinactivo14.png);}
-
-div#varios.active{background-image:url(../img/menu/botonesmenuactiv15.png);}
 div#varios{background-image:url(../img/menu/botonesmenuinactivo15.png);}
 
 #menu_target{display:none; width:100%; margin-top:5px; float:left; }

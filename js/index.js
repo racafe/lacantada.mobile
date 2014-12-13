@@ -13,7 +13,6 @@ function preload() {
 }
 preload(
 	"img/splash.png",
-	"img/popup.png",
 	"img/popup1.png",
 	"img/menu/botonesmenuactiv01.png",
 	"img/menu/botonesmenuactiv02.png",
@@ -88,7 +87,9 @@ var app = {
     },
 
     start: function() {		
-//		navigator.splashscreen.hide(); navigator.notification.vibrate(1000);
+		if (typeof (navigator.app) !== "undefined") {
+			navigator.splashscreen.hide(); navigator.notification.vibrate(1000);
+		}
 		updateMyApp("inicio");
 		setup_all();
 		setTimeout(function(){

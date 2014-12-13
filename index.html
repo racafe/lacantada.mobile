@@ -80,7 +80,7 @@
                     <div class="wrapper"><!-- wrapper needed for scroll -->
                     	<div id="info_container">
                         	<div class="scroller">
-                                <img src="img/promo1.jpg" id="branch_image" />
+                                <img src="img/promos1.jpg" id="branch_image" />
                                 <h1 style="margin-top:0;">ACERCA DE:</h1>
                                 <p id="branch_description"></p>
                                 <h1>UBICACIÓN:</h1>
@@ -120,7 +120,9 @@
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
             app.initialize();
-			app.start();
+			if (typeof (navigator.app) == "undefined") {
+				app.start();
+			}
         </script>
     </body>
 </html>
