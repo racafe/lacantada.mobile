@@ -87,9 +87,7 @@ var app = {
     },
 
     start: function() {		
-		if (typeof (navigator.app) !== "undefined") {
-			navigator.splashscreen.hide(); navigator.notification.vibrate(1000);
-		}
+		navigator.splashscreen.hide(); navigator.notification.vibrate(1000);
 		updateMyApp("inicio");
 		setup_all();
 		setTimeout(function(){
