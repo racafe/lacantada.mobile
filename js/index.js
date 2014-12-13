@@ -182,6 +182,7 @@ var app = {
 			setup_fotos();
 			setup_info();
 			document.addEventListener("backbutton", function(e){
+				alert("back");
 				if(getLocationHash()=='#inicio'){
 					/* 
 					 Event preventDefault/stopPropagation not required as adding backbutton
