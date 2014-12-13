@@ -72,6 +72,17 @@ var app = {
     // function, we must explicity call `app.receivedEvent(...);`
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+		document.addEventListener("backbutton", function(e){
+			alert("back");
+			if(getLocationHash()=='#inicio'){
+				/* 
+				 Event preventDefault/stopPropagation not required as adding backbutton
+				  listener itself override the default behaviour. Refer below PhoneGap link.
+				*/
+				//e.preventDefault();
+				navigator.app.exitApp();
+			}
+		}, false);
     },
 
     // Update DOM on a Received Event
@@ -181,17 +192,6 @@ var app = {
 			setup_inicio();
 			setup_fotos();
 			setup_info();
-			document.addEventListener("backbutton", function(e){
-				alert("back");
-				if(getLocationHash()=='#inicio'){
-					/* 
-					 Event preventDefault/stopPropagation not required as adding backbutton
-					  listener itself override the default behaviour. Refer below PhoneGap link.
-					*/
-					//e.preventDefault();
-					navigator.app.exitApp();
-				}
-			}, false);
 		}
 		function search_all(){}
 		function setup_menu(){
